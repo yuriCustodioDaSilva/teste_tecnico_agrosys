@@ -1,0 +1,7 @@
+Olá! Primeiramente, quero agradecer a oportunidade de realizar este teste. Foi muito interessante trabalhar com alasql, achei bem parecido com SQLite, mas mais simples de usar diretamente no navegador. Optei por não utilizar Node.js ou outros frameworks externos além do que foi especificado no documento, utilizando apenas HTML, CSS, JavaScript e alasql.js... Então não é necessário instalar nada adicional para rodar o projeto, ele funciona 100% localmente.
+
+Gostaria de ter explorado mais profundamente minhas habilidades em backend, criptografia de dados e web scraping, mas entendo que esse não era o foco do teste.
+
+Para utilizar o sistema, basta extrair a pasta compactada, abrir o arquivo index.html diretamente no navegador e já será possível acessar todas as funcionalidades.
+
+Deixei o projeto publicado no meu GitHub Pages, que pode ser acessado pelo link:
