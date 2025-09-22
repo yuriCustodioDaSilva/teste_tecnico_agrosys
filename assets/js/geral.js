@@ -84,13 +84,46 @@ $(document).ready(function () {
             try {
                 const data = JSON.parse(e.target.result);
 
-                alasql('DELETE FROM usuarios');
-                alasql('DELETE FROM clientes');
-                alasql('DELETE FROM enderecos');
+                alasql('DROP TABLE IF EXISTS usuarios');
+                alasql('DROP TABLE IF EXISTS clientes');
+                alasql('DROP TABLE IF EXISTS enderecos');
+
+                alasql(`
+                CREATE TABLE usuarios (
+                    id INT PRIMARY KEY,
+                    usuario STRING UNIQUE,
+                    senha STRING
+                );
+            `);
+
+                alasql(`
+                CREATE TABLE clientes (
+                    id INT PRIMARY KEY,
+                    nome STRING,
+                    cpf STRING UNIQUE,
+                    nascimento DATE,
+                    telefone STRING,
+                    celular STRING
+                );
+            `);
+
+                alasql(`
+                CREATE TABLE enderecos (
+                    id INT PRIMARY KEY,
+                    cliente_id INT,
+                    cep STRING,
+                    rua STRING,
+                    bairro STRING,
+                    cidade STRING,
+                    estado STRING,
+                    pais STRING,
+                    principal BOOLEAN
+                );
+            `);
 
                 if (data.usuarios) {
                     data.usuarios.forEach(u =>
-                        alasql('INSERT INTO usuarios (usuario, senha) VALUES (?, ?)', [u.usuario, u.senha])
+                        alasql('INSERT INTO usuarios (id, usuario, senha) VALUES (?, ?, ?)', [u.id, u.usuario, u.senha])
                     );
                 }
                 if (data.clientes) {
@@ -100,9 +133,9 @@ $(document).ready(function () {
                     );
                 }
                 if (data.enderecos) {
-                    data.enderecos.forEach(e =>
+                    data.enderecos.forEach(end =>
                         alasql('INSERT INTO enderecos (id, cliente_id, cep, rua, bairro, cidade, estado, pais, principal) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)',
-                            [e.id, e.cliente_id, e.cep, e.rua, e.bairro, e.cidade, e.estado, e.pais, e.principal])
+                            [end.id, end.cliente_id, end.cep, end.rua, end.bairro, end.cidade, end.estado, end.pais, end.principal])
                     );
                 }
 
@@ -115,6 +148,7 @@ $(document).ready(function () {
 
         reader.readAsText(file);
     });
+
 
     $('#btnLogout').on('click', function () {
         sessionStorage.removeItem('usuario_logado');
