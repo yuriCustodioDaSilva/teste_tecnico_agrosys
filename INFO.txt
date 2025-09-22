@@ -5,3 +5,4 @@ Gostaria de ter explorado mais profundamente minhas habilidades em backend, crip
 Para utilizar o sistema, basta extrair a pasta compactada, abrir o arquivo index.html diretamente no navegador e já será possível acessar todas as funcionalidades.
 
 Deixei o projeto publicado no meu GitHub Pages, que pode ser acessado pelo link:
+https://yuricustodiodasilva.github.io/teste_tecnico_agrosys/index.html
